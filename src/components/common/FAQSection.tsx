@@ -127,20 +127,20 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search process, pricing model, delivery timelines, IP rights..."
-            className="w-full pl-11 pr-10 py-3.5 rounded-2xl bg-white/5 border border-white/10 text-xs sm:text-sm text-white placeholder-slate-400 backdrop-blur-md focus:outline-none focus:border-blue-500/80 focus:ring-1 focus:ring-blue-500/50 transition-all shadow-inner"
+            className="w-full pl-11 pr-10 py-3.5 rounded-2xl bg-white/5 border border-white/10 text-base sm:text-sm text-white placeholder-slate-400 backdrop-blur-md focus:outline-none focus:border-blue-500/80 focus:ring-1 focus:ring-blue-500/50 transition-all shadow-inner"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery('')}
-              className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-white transition-colors"
+              className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-white transition-colors min-h-[44px]"
             >
               <X className="w-4 h-4" />
             </button>
           )}
         </div>
 
-        {/* Category Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
+        {/* Category Pills - Touch scrollable on small screens */}
+        <div className="flex overflow-x-auto no-scrollbar py-2 px-1 gap-2 flex-nowrap sm:flex-wrap sm:justify-center -mx-4 sm:mx-0 px-4 sm:px-0">
           {categories.map((cat) => {
             const isActive = activeCategory === cat;
             return (
@@ -150,7 +150,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
                   setActiveCategory(cat);
                   setOpenIndices([0]); // Reset accordion state to open first item in view
                 }}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-mono-tech transition-all flex items-center gap-1.5 cursor-pointer border ${
+                className={`px-3.5 py-2 rounded-full text-xs font-mono-tech transition-all flex items-center gap-1.5 cursor-pointer border shrink-0 min-h-[38px] ${
                   isActive
                     ? 'bg-blue-600 text-white border-blue-400 shadow-md shadow-blue-600/30 font-semibold scale-105'
                     : 'bg-white/5 hover:bg-white/10 text-slate-300 border-white/10 hover:border-white/20'

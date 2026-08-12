@@ -1,8 +1,9 @@
 import React from 'react';
 import { SectionHeading } from '../components/common/SectionHeading';
 import { CTASection } from '../components/common/CTASection';
+import { FounderSection } from '../components/common/FounderSection';
 import { NavigationRoute } from '../types';
-import { ShieldCheck, Target, Eye, Code2, Layers, CheckCircle2, Globe2 } from 'lucide-react';
+import { Target, Eye, Code2, Layers, CheckCircle2, Globe2 } from 'lucide-react';
 
 interface AboutPageProps {
   onRouteChange: (route: NavigationRoute) => void;
@@ -107,6 +108,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({
 
         </div>
       </section>
+
+      {/* FOUNDER & LEADERSHIP SPOTLIGHT */}
+      <FounderSection onOpenModal={onOpenProjectModal} />
 
       {/* OUR PRINCIPLES */}
       <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

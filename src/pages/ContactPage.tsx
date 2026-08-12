@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { SectionHeading } from '../components/common/SectionHeading';
+import { CTASection } from '../components/common/CTASection';
 import { NavigationRoute } from '../types';
-import { Code2, Layers, Send, CheckCircle2, ShieldCheck, Mail, MapPin, Globe2 } from 'lucide-react';
+import { Code2, Layers, Send, CheckCircle2, ShieldCheck, Mail, MapPin, Globe2, Linkedin, MessageSquare } from 'lucide-react';
 import { sendEmailNotification } from '../lib/emailService';
 import { useToast } from '../context/ToastContext';
+import { FOUNDER_DATA } from '../data/companyData';
 
 interface ContactPageProps {
   onRouteChange: (route: NavigationRoute) => void;
@@ -180,13 +182,40 @@ export const ContactPage: React.FC<ContactPageProps> = ({
               <h3 className="text-2xl font-bold font-display text-white">
                 Send a Direct Inquiry
               </h3>
-              <p className="text-xs text-slate-400 font-mono-tech mt-1 flex items-center gap-1.5">
-                <Mail className="w-3.5 h-3.5 text-blue-400" />
-                <span>Direct Email:</span>
-                <a href="mailto:eniolaayobamidele0@gmail.com" className="text-blue-300 hover:text-white underline transition-colors">
-                  eniolaayobamidele0@gmail.com
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-slate-400 font-mono-tech mt-1.5">
+                <p className="flex items-center gap-1.5">
+                  <Mail className="w-3.5 h-3.5 text-blue-400" />
+                  <span>Direct Email:</span>
+                  <a href="mailto:eniolaayobamidele0@gmail.com" className="text-blue-300 hover:text-white underline transition-colors">
+                    eniolaayobamidele0@gmail.com
+                  </a>
+                </p>
+                <span className="text-slate-600 hidden sm:inline">•</span>
+                <p className="flex items-center gap-1.5">
+                  <Linkedin className="w-3.5 h-3.5 text-blue-400" />
+                  <span>LinkedIn:</span>
+                  <a
+                    href={FOUNDER_DATA.socials.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-blue-300 hover:text-white underline transition-colors"
+                  >
+                    Eniola Ayobamidele
+                  </a>
+                </p>
+              </div>
+
+              <div className="pt-3">
+                <a
+                  href={FOUNDER_DATA.whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600/90 hover:bg-emerald-500 text-white text-xs font-bold font-display shadow-md shadow-emerald-600/20 transition-all border border-emerald-400/30 cursor-pointer"
+                >
+                  <MessageSquare className="w-3.5 h-3.5 text-emerald-100" />
+                  <span>Chat With Us on WhatsApp</span>
                 </a>
-              </p>
+              </div>
             </div>
             <span className="hidden sm:inline-flex px-3 py-1 rounded-full text-xs font-mono-tech bg-emerald-950/60 text-emerald-300 border border-emerald-500/30">
               Response SLA: &lt; 24h
@@ -346,6 +375,9 @@ export const ContactPage: React.FC<ContactPageProps> = ({
 
         </div>
       </section>
+
+      {/* REUSABLE CONTACT CTA */}
+      <CTASection onOpenModal={onOpenProjectModal} />
 
     </div>
   );

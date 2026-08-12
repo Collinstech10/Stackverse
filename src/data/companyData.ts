@@ -1,5 +1,29 @@
 import { ProductItem, ServiceItem, ProjectItem, VentureStep, ProcessStep, InsightArticle, FAQItem } from '../types';
 
+export const FOUNDER_DATA = {
+  name: 'Temi Johnson Eniola',
+  alias: 'Collins',
+  positions: [
+    { title: 'Founder & CEO', entity: 'StackVerse' },
+    { title: 'Founder', entity: 'CollinsTech' }
+  ],
+  quote: 'Build. Learn. Launch.',
+  bio: [
+    'Temi Johnson Eniola, professionally known as Collins, is a software developer and technology entrepreneur focused on building modern digital products, software systems and technology solutions.',
+    'He is the founder of StackVerse, a technology company focused on building digital products, SaaS platforms, AI solutions and technology ventures.',
+    'He is also the founder of CollinsTech, the software engineering and digital solutions division of StackVerse, helping businesses transform ideas into production-ready websites, applications, custom software, APIs, AI systems and other digital solutions.',
+    'His vision is to build technology that solves real problems, creates opportunities and can scale from Africa to the world.'
+  ],
+  whatsappNumber: '+234 813 471 7670',
+  whatsappUrl: 'https://wa.me/2348134717670?text=Hello%20StackVerse%2C%20I%27d%20like%20to%20discuss%20a%20project.',
+  socials: {
+    linkedin: 'https://www.linkedin.com/in/eniola-ayobamidele-217119327',
+    github: 'https://github.com',
+    twitter: 'https://x.com',
+    instagram: 'https://instagram.com'
+  }
+};
+
 export const PRODUCTS_DATA: ProductItem[] = [
   {
     id: 'sme-os',
