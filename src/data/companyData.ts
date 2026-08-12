@@ -401,29 +401,89 @@ By combining modular code templates, pre-tested auth and billing components, and
 ];
 
 export const COLLINSTECH_FAQS: FAQItem[] = [
+  // DEVELOPMENT PROCESS
   {
-    category: 'General',
-    question: 'What is the relationship between CollinsTech and StackVerse?',
-    answer: 'StackVerse is the parent technology company focused on building digital products, SaaS platforms, and technology ventures. CollinsTech is the specialized software engineering and digital solutions division of StackVerse, providing client services, custom software, web/mobile development, AI integrations, and cloud solutions.'
+    category: 'Development Process',
+    question: 'What does the software development lifecycle look like at CollinsTech?',
+    answer: 'We follow a disciplined 6-phase engineering lifecycle: Discovery & Requirements Scoping, System Architecture & UI/UX Design, Agile Iterative Sprints, Automated Quality Assurance & Penetration Checks, Production Cloud Deployment, and Ongoing Scale & Support. Every phase includes clear client sign-offs and live staging links.'
   },
   {
-    category: 'Engagement',
-    question: 'How do we get started on a software project with CollinsTech?',
-    answer: 'You can click "Start a Project" anywhere on the website or fill out our Contact form. We begin with a discovery session to understand your business goals, scope out the technical requirements, and provide a transparent project breakdown and timeline.'
+    category: 'Development Process',
+    question: 'How do you handle project communication and progress updates?',
+    answer: 'Transparency is fundamental. You receive access to a dedicated communication channel (Slack or Teams), a live staging URL updated after every sprint, bi-weekly video sprint reviews, and an interactive milestone tracking dashboard showing completed deliverables.'
   },
   {
-    category: 'Technology',
-    question: 'What tech stack does CollinsTech specialize in?',
-    answer: 'We build primarily with modern, robust technologies including TypeScript, React, Next.js, Node.js, Python, Express, React Native, PostgreSQL, Docker, AWS, Google Cloud, and AI frameworks like Google GenAI (@google/genai SDK).'
+    category: 'Development Process',
+    question: 'Can we request changes or add new features during active development?',
+    answer: 'Yes. We build using flexible Agile methodologies. Minor iterations are incorporated during standard sprint planning. For major scope additions, we evaluate technical impact and provide a transparent scope-change proposal with cost and schedule adjustments before proceeding.'
   },
   {
-    category: 'Quality & IP',
+    category: 'Development Process',
+    question: 'Can CollinsTech work with our existing legacy codebase or internal dev team?',
+    answer: 'Absolutely. We frequently collaborate with internal client engineering teams, perform codebase audits, modernize legacy monolithic systems into modular cloud services, or act as an end-to-end dedicated engineering task force.'
+  },
+
+  // PRICING & BUDGETING
+  {
+    category: 'Pricing & Budget',
+    question: 'What pricing models do you offer for software development?',
+    answer: 'We offer two primary pricing structures: 1) Fixed-Price Milestone Contracts for well-defined project scopes with fixed deliverables, and 2) Time & Materials / Dedicated Engineering Squads for evolving products, continuous R&D, or long-term enterprise development.'
+  },
+  {
+    category: 'Pricing & Budget',
+    question: 'How are payment milestones structured?',
+    answer: 'For fixed-scope projects, payments are tied directly to verifiable milestone deliverables (e.g., 25% Project Kickoff & Architecture Sign-off, 25% Core MVP Engine, 25% Beta Staging & UAT, 25% Final Production Launch & IP Transfer). You never pay for unverified work.'
+  },
+  {
+    category: 'Pricing & Budget',
+    question: 'Are there any hidden fees or unexpected software licensing costs?',
+    answer: 'Zero hidden fees. All cloud infrastructure costs (AWS/GCP), third-party API subscriptions (e.g., Stripe, Twilio, Gemini API), and domain licensing are fully detailed in our initial technical scoping document with transparent cost estimations.'
+  },
+  {
+    category: 'Pricing & Budget',
+    question: 'What is the typical budget required to build a custom product with CollinsTech?',
+    answer: 'Initial MVP applications and specialized internal business tools typically range from $10,000 to $25,000. Full-scale multi-tenant SaaS platforms, cross-platform mobile apps, or enterprise AI integrations typically range from $25,000 to $75,000+ depending on architectural complexity.'
+  },
+
+  // TIMELINES & DELIVERY
+  {
+    category: 'Timelines & Delivery',
+    question: 'How long does it typically take to complete a software project?',
+    answer: 'Timeline depends on project scope: Focused web portals and targeted MVPs are delivered in 4 to 8 weeks. Comprehensive SaaS platforms, mobile applications, or custom enterprise platforms typically require 10 to 16 weeks from discovery to production launch.'
+  },
+  {
+    category: 'Timelines & Delivery',
+    question: 'What if we have an urgent launch deadline or investor event?',
+    answer: 'We offer accelerated sprint delivery by deploying dedicated parallel engineering teams. During technical scoping, we can define a prioritized "Phase 1 Essential MVP" to guarantee a working, high-impact product by your deadline.'
+  },
+  {
+    category: 'Timelines & Delivery',
+    question: 'How do you ensure projects stay on schedule and avoid scope creep?',
+    answer: 'Every project is assigned a Lead Solutions Architect and Technical Project Manager. We use strict sprint backlogs, automated CI/CD build pipelines, and weekly velocity tracking to identify bottleneck risks before they impact your delivery date.'
+  },
+
+  // IP, NDAs & SECURITY
+  {
+    category: 'IP & Security',
     question: 'Who owns the intellectual property and source code of the project?',
-    answer: 'You do. Upon project completion and final milestone release, 100% of the custom source code, documentation, designs, and intellectual property rights belong exclusively to your business.'
+    answer: 'You retain 100% full intellectual property ownership. Upon milestone completion and final release, all source code, database schemas, Figma design files, build scripts, and documentation belong exclusively to your company.'
   },
   {
-    category: 'Support',
-    question: 'Do you offer post-launch support and maintenance?',
-    answer: 'Yes. CollinsTech provides post-launch support packages, including server monitoring, security patch updates, feature enhancements, and SLA-backed bug fix guarantees.'
+    category: 'IP & Security',
+    question: 'Do you sign Non-Disclosure Agreements (NDAs) before technical scoping?',
+    answer: 'Yes, absolutely. We sign mutual NDAs prior to any technical discovery or code review to ensure your proprietary business logic, trade secrets, and customer data remain strictly confidential.'
+  },
+  {
+    category: 'IP & Security',
+    question: 'How do you guarantee application security and data protection?',
+    answer: 'Security is engineered from Day 1. We perform OWASP Top 10 vulnerability checks, strict data encryption at rest and in transit (TLS 1.3), token-based OAuth2/OIDC authentication, and automated security dependency audits before shipping to production.'
+  },
+
+  // POST-LAUNCH & SUPPORT
+  {
+    category: 'Support & Maintenance',
+    question: 'Do you provide post-launch technical support and server maintenance?',
+    answer: 'Yes. Every project includes a 30-day warranty period for bug fixes. Beyond launch, we offer SLA-backed monthly maintenance agreements covering 24/7 server health monitoring, security patches, performance optimization, and continuous feature expansion.'
   }
 ];
+

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { X, Sparkles, Code2, Layers, CheckCircle2, Send, ShieldCheck, ArrowRight } from 'lucide-react';
 import { ProductItem, ProjectItem } from '../../types';
 import { sendEmailNotification } from '../../lib/emailService';
+import { useToast } from '../../context/ToastContext';
 
 interface ProjectModalProps {
   isOpen: boolean;
@@ -16,6 +17,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
   selectedProduct,
   selectedCaseStudy,
 }) => {
+  const { showToast } = useToast();
   const [inquiryType, setInquiryType] = useState<'collinstech' | 'stackverse'>('collinstech');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -38,6 +40,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
+      showToast('Validation Error', 'Please complete all required fields.', 'error');
       return;
     }
 
@@ -73,6 +76,12 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
       division: inquiryType === 'collinstech' ? 'Collins Tech Consulting' : 'StackVerse Platform',
       productOrCaseStudy: selectedProduct?.name || selectedCaseStudy?.title || 'General',
     });
+
+    showToast(
+      'Inquiry Submitted',
+      `Thank you ${name}. Your project request (${selectedProduct?.name || selectedCaseStudy?.title || 'Consultation'}) has been sent!`,
+      'success'
+    );
 
     setSubmitted(true);
   };

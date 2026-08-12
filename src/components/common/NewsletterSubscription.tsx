@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, CheckCircle2, ArrowRight, Sparkles } from 'lucide-react';
 import { sendEmailNotification } from '../../lib/emailService';
+import { useToast } from '../../context/ToastContext';
 
 export interface NewsletterSubscriptionProps {
   variant?: 'inline' | 'card';
@@ -17,6 +18,7 @@ export const NewsletterSubscription: React.FC<NewsletterSubscriptionProps> = ({
 }) => {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const { showToast } = useToast();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,6 +37,12 @@ export const NewsletterSubscription: React.FC<NewsletterSubscriptionProps> = ({
         type: 'newsletter_subscription',
         email: emailVal,
       });
+
+      showToast(
+        'Subscription Confirmed',
+        `Thank you for subscribing (${emailVal}). You will receive our technical dispatches!`,
+        'success'
+      );
 
       setSubscribed(true);
       setEmail('');

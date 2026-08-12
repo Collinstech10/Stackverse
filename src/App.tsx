@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavigationRoute, ProductItem, ProjectItem } from './types';
+import { ToastProvider } from './context/ToastContext';
 import { AnimatedBackground } from './components/common/AnimatedBackground';
 import { Navbar } from './components/common/Navbar';
 import { Footer } from './components/common/Footer';
@@ -157,41 +158,43 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white relative selection:bg-blue-600/30 selection:text-blue-200">
-      
-      {/* Background Animated Nodes Canvas */}
-      <AnimatedBackground />
+    <ToastProvider>
+      <div className="min-h-screen bg-[#050505] text-white relative selection:bg-blue-600/30 selection:text-blue-200">
+        
+        {/* Background Animated Nodes Canvas */}
+        <AnimatedBackground />
 
-      {/* Navigation Header */}
-      <Navbar
-        currentRoute={currentRoute}
-        onRouteChange={handleRouteChange}
-        onOpenProjectModal={handleOpenGeneralProjectModal}
-      />
+        {/* Navigation Header */}
+        <Navbar
+          currentRoute={currentRoute}
+          onRouteChange={handleRouteChange}
+          onOpenProjectModal={handleOpenGeneralProjectModal}
+        />
 
-      {/* Page Content */}
-      <main className="relative z-10 min-h-[80vh]">
-        {renderCurrentPage()}
-      </main>
+        {/* Page Content */}
+        <main className="relative z-10 min-h-[80vh]">
+          {renderCurrentPage()}
+        </main>
 
-      {/* Footer */}
-      <Footer
-        onRouteChange={handleRouteChange}
-        onOpenProjectModal={handleOpenGeneralProjectModal}
-      />
+        {/* Footer */}
+        <Footer
+          onRouteChange={handleRouteChange}
+          onOpenProjectModal={handleOpenGeneralProjectModal}
+        />
 
-      {/* Unified Project & Inspection Modal */}
-      <ProjectModal
-        isOpen={projectModalOpen}
-        onClose={() => {
-          setProjectModalOpen(false);
-          setSelectedProduct(null);
-          setSelectedCaseStudy(null);
-        }}
-        selectedProduct={selectedProduct}
-        selectedCaseStudy={selectedCaseStudy}
-      />
+        {/* Unified Project & Inspection Modal */}
+        <ProjectModal
+          isOpen={projectModalOpen}
+          onClose={() => {
+            setProjectModalOpen(false);
+            setSelectedProduct(null);
+            setSelectedCaseStudy(null);
+          }}
+          selectedProduct={selectedProduct}
+          selectedCaseStudy={selectedCaseStudy}
+        />
 
-    </div>
+      </div>
+    </ToastProvider>
   );
 }

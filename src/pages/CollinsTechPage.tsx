@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SectionHeading } from '../components/common/SectionHeading';
 import { ServiceCard } from '../components/common/ServiceCard';
 import { ProjectCard } from '../components/common/ProjectCard';
 import { CTASection } from '../components/common/CTASection';
+import { FAQSection } from '../components/common/FAQSection';
 import { SERVICES_DATA, PORTFOLIO_DATA, PROCESS_STEPS, COLLINSTECH_FAQS } from '../data/companyData';
 import { NavigationRoute, ProjectItem } from '../types';
-import { Code2, ArrowRight, CheckCircle2, ChevronDown, Sparkles, Layers, ShieldCheck, Terminal, Cpu } from 'lucide-react';
+import { Code2, CheckCircle2, Sparkles, Terminal } from 'lucide-react';
 
 interface CollinsTechPageProps {
   onRouteChange: (route: NavigationRoute) => void;
@@ -18,7 +19,6 @@ export const CollinsTechPage: React.FC<CollinsTechPageProps> = ({
   onOpenProjectModal,
   onSelectCaseStudy,
 }) => {
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   const techStackGroups = [
     { name: 'Frontend', items: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Vite', 'React Native', 'Framer Motion'] },
@@ -197,41 +197,14 @@ export const CollinsTechPage: React.FC<CollinsTechPageProps> = ({
       </section>
 
       {/* FREQUENTLY ASKED QUESTIONS */}
-      <section className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          align="center"
-          divisionBadge="COLLINSTECH"
-          eyebrow="FAQ"
-          title="Frequently Asked Questions"
-          subtitle="Everything you need to know about partnering with CollinsTech for software engineering."
-        />
-
-        <div className="space-y-4">
-          {COLLINSTECH_FAQS.map((faq, index) => {
-            const isOpen = openFaqIndex === index;
-            return (
-              <div
-                key={index}
-                className="rounded-2xl glass-card border border-white/10 overflow-hidden transition-all duration-200"
-              >
-                <button
-                  onClick={() => setOpenFaqIndex(isOpen ? null : index)}
-                  className="w-full p-6 text-left flex items-center justify-between gap-4 font-display font-semibold text-white hover:text-blue-300 transition-colors"
-                >
-                  <span className="text-base sm:text-lg">{faq.question}</span>
-                  <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180 text-blue-400' : ''}`} />
-                </button>
-
-                {isOpen && (
-                  <div className="px-6 pb-6 text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-4">
-                    {faq.answer}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </section>
+      <FAQSection
+        faqs={COLLINSTECH_FAQS}
+        divisionBadge="COLLINSTECH"
+        title="Frequently Asked Questions"
+        subtitle="Clear answers about our engineering process, pricing structures, project timelines, code ownership, and security standards."
+        onOpenModal={onOpenProjectModal}
+        onNavigateToContact={() => onRouteChange('/contact')}
+      />
 
       {/* CTA SECTION */}
       <CTASection

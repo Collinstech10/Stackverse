@@ -3,6 +3,7 @@ import { SectionHeading } from '../components/common/SectionHeading';
 import { NavigationRoute } from '../types';
 import { Code2, Layers, Send, CheckCircle2, ShieldCheck, Mail, MapPin, Globe2 } from 'lucide-react';
 import { sendEmailNotification } from '../lib/emailService';
+import { useToast } from '../context/ToastContext';
 
 interface ContactPageProps {
   onRouteChange: (route: NavigationRoute) => void;
@@ -13,6 +14,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
   onRouteChange,
   onOpenProjectModal,
 }) => {
+  const { showToast } = useToast();
   const [activePath, setActivePath] = useState<'collinstech' | 'stackverse'>('collinstech');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -33,6 +35,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
+      showToast('Validation Error', 'Please complete all required fields.', 'error');
       return;
     }
 
@@ -65,6 +68,12 @@ export const ContactPage: React.FC<ContactPageProps> = ({
       message,
       division: activePath === 'collinstech' ? 'Collins Tech Consulting' : 'StackVerse Platform',
     });
+
+    showToast(
+      'Inquiry Transmitted',
+      `Thank you ${name}. Your message has been routed to our team (${email}).`,
+      'success'
+    );
 
     setSubmitted(true);
   };
