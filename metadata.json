@@ -1,0 +1,6 @@
+{
+  "name": "StackVerse",
+  "description": "Building the Digital Universe. StackVerse & CollinsTech Software Engineering & Digital Solutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
