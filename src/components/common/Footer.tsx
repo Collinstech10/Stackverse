@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavigationRoute } from '../../types';
-import { Code2, ArrowRight, ShieldCheck, Github, Linkedin, Twitter, Youtube, Instagram, Mail } from 'lucide-react';
+import { Code2, ArrowRight, ShieldCheck, Github, Linkedin, Twitter, Youtube, Instagram, MessageSquare } from 'lucide-react';
 import { NewsletterSubscription } from './NewsletterSubscription';
+import { FOUNDER_DATA } from '../../data/companyData';
 
 interface FooterProps {
   onRouteChange: (route: NavigationRoute) => void;
@@ -136,25 +137,28 @@ export const Footer: React.FC<FooterProps> = ({ onRouteChange, onOpenProjectModa
             </h4>
             <div className="flex flex-wrap gap-2">
               <a
-                href="https://x.com"
+                href={FOUNDER_DATA.whatsappUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="p-2.5 rounded-xl bg-emerald-600/20 text-emerald-300 hover:text-white hover:bg-emerald-600/40 border border-emerald-500/30 transition-colors flex items-center gap-1.5 text-xs font-mono-tech"
+                aria-label="Chat on WhatsApp"
+                title="Chat on WhatsApp"
+              >
+                <MessageSquare className="w-4 h-4 text-emerald-400" />
+                <span>WhatsApp</span>
+              </a>
+              <a
+                href={FOUNDER_DATA.socials.linkedin}
                 target="_blank"
                 rel="noreferrer"
                 className="p-2.5 rounded-xl bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 border border-white/10 transition-colors"
-                aria-label="X (Twitter)"
+                aria-label="LinkedIn Profile"
+                title="LinkedIn Profile"
               >
-                <Twitter className="w-4 h-4" />
+                <Linkedin className="w-4 h-4 text-blue-400" />
               </a>
               <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="p-2.5 rounded-xl bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 border border-white/10 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <a
-                href="https://github.com"
+                href={FOUNDER_DATA.socials.github}
                 target="_blank"
                 rel="noreferrer"
                 className="p-2.5 rounded-xl bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 border border-white/10 transition-colors"
@@ -163,16 +167,16 @@ export const Footer: React.FC<FooterProps> = ({ onRouteChange, onOpenProjectModa
                 <Github className="w-4 h-4" />
               </a>
               <a
-                href="https://youtube.com"
+                href={FOUNDER_DATA.socials.twitter}
                 target="_blank"
                 rel="noreferrer"
                 className="p-2.5 rounded-xl bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 border border-white/10 transition-colors"
-                aria-label="YouTube"
+                aria-label="X (Twitter)"
               >
-                <Youtube className="w-4 h-4" />
+                <Twitter className="w-4 h-4" />
               </a>
               <a
-                href="https://instagram.com"
+                href={FOUNDER_DATA.socials.instagram}
                 target="_blank"
                 rel="noreferrer"
                 className="p-2.5 rounded-xl bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 border border-white/10 transition-colors"
