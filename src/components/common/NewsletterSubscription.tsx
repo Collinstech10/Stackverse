@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, CheckCircle2, ArrowRight, Sparkles } from 'lucide-react';
+import { sendEmailNotification } from '../../lib/emailService';
 
 export interface NewsletterSubscriptionProps {
   variant?: 'inline' | 'card';
@@ -20,6 +21,21 @@ export const NewsletterSubscription: React.FC<NewsletterSubscriptionProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim() && email.includes('@')) {
+      const emailVal = email.trim();
+      try {
+        const existing = JSON.parse(localStorage.getItem('stackverse_newsletter_subscribers') || '[]');
+        existing.push({ email: emailVal, date: new Date().toISOString() });
+        localStorage.setItem('stackverse_newsletter_subscribers', JSON.stringify(existing));
+      } catch (err) {
+        console.error('LocalStorage save failed:', err);
+      }
+
+      // Trigger EmailJS dispatch
+      sendEmailNotification({
+        type: 'newsletter_subscription',
+        email: emailVal,
+      });
+
       setSubscribed(true);
       setEmail('');
       setTimeout(() => setSubscribed(false), 6000);

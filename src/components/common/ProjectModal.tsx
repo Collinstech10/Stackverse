@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Sparkles, Code2, Layers, CheckCircle2, Send, ShieldCheck, ArrowRight } from 'lucide-react';
 import { ProductItem, ProjectItem } from '../../types';
+import { sendEmailNotification } from '../../lib/emailService';
 
 interface ProjectModalProps {
   isOpen: boolean;
@@ -41,6 +42,38 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
     }
 
     setErrors({});
+    try {
+      const existing = JSON.parse(localStorage.getItem('stackverse_messages') || '[]');
+      existing.push({
+        id: Date.now().toString(),
+        name,
+        email,
+        company,
+        projectType,
+        budget,
+        message,
+        division: inquiryType,
+        selectedProduct: selectedProduct?.name,
+        selectedCaseStudy: selectedCaseStudy?.title,
+        date: new Date().toISOString(),
+      });
+      localStorage.setItem('stackverse_messages', JSON.stringify(existing));
+    } catch (err) {
+      console.error('Failed to save project modal inquiry:', err);
+    }
+
+    sendEmailNotification({
+      type: 'contact_message',
+      name,
+      email,
+      company,
+      projectType,
+      budget,
+      message,
+      division: inquiryType === 'collinstech' ? 'Collins Tech Consulting' : 'StackVerse Platform',
+      productOrCaseStudy: selectedProduct?.name || selectedCaseStudy?.title || 'General',
+    });
+
     setSubmitted(true);
   };
 

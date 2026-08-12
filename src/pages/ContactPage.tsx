@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { SectionHeading } from '../components/common/SectionHeading';
 import { NavigationRoute } from '../types';
 import { Code2, Layers, Send, CheckCircle2, ShieldCheck, Mail, MapPin, Globe2 } from 'lucide-react';
+import { sendEmailNotification } from '../lib/emailService';
 
 interface ContactPageProps {
   onRouteChange: (route: NavigationRoute) => void;
@@ -36,6 +37,35 @@ export const ContactPage: React.FC<ContactPageProps> = ({
     }
 
     setErrors({});
+    try {
+      const existing = JSON.parse(localStorage.getItem('stackverse_messages') || '[]');
+      existing.push({
+        id: Date.now().toString(),
+        name,
+        email,
+        company,
+        projectType,
+        budget,
+        message,
+        division: activePath,
+        date: new Date().toISOString(),
+      });
+      localStorage.setItem('stackverse_messages', JSON.stringify(existing));
+    } catch (err) {
+      console.error('Failed to save message:', err);
+    }
+
+    sendEmailNotification({
+      type: 'contact_message',
+      name,
+      email,
+      company,
+      projectType,
+      budget,
+      message,
+      division: activePath === 'collinstech' ? 'Collins Tech Consulting' : 'StackVerse Platform',
+    });
+
     setSubmitted(true);
   };
 
